@@ -18,9 +18,9 @@ from google_oauth import is_authenticated, session_info
 @ui.page('/admin', favicon='🚀', title='AIサポートデスク管理画面')
 async def admin_page(request: Request):
     # ======================================== Checking session login status ========================================
-    # if not is_authenticated(request):
-    #     return RedirectResponse('/login?next=/admin')
-    # session = session_info[request.session['id']]
+    if not is_authenticated(request):
+        return RedirectResponse('/login?next=/admin')
+    session = session_info[request.session['id']]
 
     # -------------------------- Starting app loding -------------------------- #
     with ui.card().tight().classes('fixed-center') as startup_element:
